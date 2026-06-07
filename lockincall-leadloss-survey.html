@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>LockInCall — What Is Silence Costing You?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light only;
+    --bg:#fbfcff;--bg2:#ffffff;--panel:#eef3fb;
+    --navy:#0f2c54;--blue:#1d4e89;--blue-soft:#516a8c;
+    --orange:#f47a1f;--orange-2:#ff9442;--orange-deep:#d85f0c;
+    --good:#1f9d57;--red:#cf4436;
+    --line:rgba(15,44,84,.13);--line2:rgba(15,44,84,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{color-scheme:light only;background:linear-gradient(180deg,#fbfcff,#fbfcff) fixed;background-color:#fbfcff;scroll-behavior:smooth}
+  body{background:linear-gradient(180deg,#fbfcff,#fbfcff) fixed;background-color:#fbfcff;
+    color:var(--blue);font-family:'Barlow',sans-serif;line-height:1.5;position:relative;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background-image:linear-gradient(rgba(29,78,137,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(29,78,137,.06) 1px,transparent 1px);
+    background-size:46px 46px;mask-image:radial-gradient(ellipse 120% 70% at 50% 0%,#000 25%,transparent 80%)}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 22px 70px}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
+    border-bottom:1px solid var(--line);padding:34px 0 18px;margin-bottom:26px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:11px}
+  .mark{width:36px;height:36px;border-radius:9px;background:linear-gradient(145deg,var(--orange-2),var(--orange-deep));
+    display:grid;place-items:center;font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:19px;color:#fff;
+    box-shadow:0 5px 16px rgba(244,122,31,.4),inset 0 1px 0 rgba(255,255,255,.4)}
+  .logo .name{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:21px;color:var(--navy)}
+  .logo .name span{color:var(--orange)}
+  .badge{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--blue-soft);border:1px solid var(--line);border-radius:7px;padding:6px 12px}
+
+  .eyebrow{font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange-deep);font-weight:700;margin-bottom:14px}
+  h1{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:clamp(30px,6vw,52px);text-transform:uppercase;
+    letter-spacing:-.2px;line-height:1.0;margin-bottom:12px;color:var(--navy)}
+  h1 span{color:var(--orange)}
+  .intro{color:var(--blue-soft);font-size:16px;max-width:56ch;margin-bottom:30px}
+
+  .card{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:26px 26px 28px;
+    box-shadow:0 8px 26px -18px rgba(15,44,84,.5);margin-bottom:20px}
+  .card h2{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--navy);margin-bottom:4px}
+  .card .hint{font-size:13.5px;color:var(--blue-soft);margin-bottom:20px}
+
+  .q{margin-bottom:22px}
+  .q:last-child{margin-bottom:0}
+  .q label{display:block;font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:15.5px;
+    text-transform:uppercase;letter-spacing:.03em;color:var(--navy);margin-bottom:4px}
+  .q .sub{font-size:13px;color:var(--blue-soft);margin-bottom:10px}
+  .field{display:flex;align-items:center;gap:12px}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:7px;border-radius:6px;
+    background:linear-gradient(90deg,var(--orange) var(--p,30%),var(--panel) var(--p,30%));outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+    background:#fff;border:3px solid var(--orange-deep);cursor:pointer;box-shadow:0 2px 8px rgba(15,44,84,.3)}
+  input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--orange-deep);cursor:pointer}
+  .vbox{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:22px;color:var(--orange-deep);
+    min-width:96px;text-align:right;font-variant-numeric:tabular-nums}
+  .trade{display:flex;gap:8px;flex-wrap:wrap}
+  .trade button{font-family:'Barlow',sans-serif;font-weight:600;font-size:13.5px;color:var(--blue);
+    background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:9px 13px;cursor:pointer;transition:all .2s}
+  .trade button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .textfield{width:100%;font-family:'Barlow',sans-serif;font-size:15px;color:var(--navy);
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+  .textfield::placeholder{color:var(--blue-soft)}
+
+  /* RESULT */
+  .reveal{background:linear-gradient(135deg,#143768,var(--navy));border:1px solid var(--navy);border-radius:22px;
+    padding:34px 30px;position:relative;overflow:hidden;box-shadow:0 24px 54px -28px rgba(15,44,84,.7);margin-bottom:20px}
+  .reveal .glow{position:absolute;right:-70px;top:-70px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(244,122,31,.32),transparent 70%);filter:blur(12px)}
+  .reveal .lab{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:#9fb3d1;font-weight:700;margin-bottom:8px}
+  .reveal .big{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:clamp(46px,11vw,78px);
+    line-height:.95;color:#fff;letter-spacing:-.5px}
+  .reveal .big .yr{color:var(--orange-2)}
+  .reveal .cap{color:#c3d2e6;font-size:14.5px;margin-top:12px;max-width:48ch}
+  .splitrow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+  .mini{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:13px;padding:16px 16px}
+  .mini .k{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#9fb3d1;font-weight:600;margin-bottom:6px}
+  .mini .v{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:30px;color:#fff;line-height:1}
+  .mini .v.good{color:#6fe0a0}
+
+  .recover{background:var(--bg2);border:1px solid var(--line);border-left:4px solid var(--good);border-radius:16px;
+    padding:24px 26px;box-shadow:0 6px 18px -12px rgba(15,44,84,.4);margin-bottom:20px}
+  .recover h3{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--navy);margin-bottom:14px}
+  .recover .line{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-top:1px solid var(--line2);font-size:15px}
+  .recover .line:first-of-type{border-top:none}
+  .recover .line .amt{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:20px;color:var(--good);font-variant-numeric:tabular-nums}
+  .recover .net{margin-top:14px;padding-top:16px;border-top:2px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+  .recover .net .t{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;color:var(--navy)}
+  .recover .net .amt{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:30px;color:var(--orange-deep)}
+
+  .feat{margin-bottom:20px}
+  .feat h3{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--navy);margin-bottom:14px}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .f{display:flex;gap:11px;align-items:flex-start;background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .f svg{width:20px;height:20px;stroke:var(--orange-deep);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:1px}
+  .f span{font-size:13.5px;color:var(--blue);font-weight:500;line-height:1.4}
+  .f b{color:var(--navy);font-weight:700;display:block;font-size:13.5px;font-family:'Saira Condensed','Arial Narrow',sans-serif;letter-spacing:.02em;text-transform:uppercase}
+
+  .cta{text-align:center;padding:30px 20px 6px}
+  .cta p{color:var(--blue-soft);font-size:15px;margin-bottom:18px}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;
+    font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:#fff;
+    background:linear-gradient(145deg,var(--orange-2),var(--orange-deep));padding:15px 34px;border-radius:100px;
+    text-decoration:none;cursor:pointer;border:none;box-shadow:0 14px 34px -10px rgba(244,122,31,.6),inset 0 1px 0 rgba(255,255,255,.3);transition:transform .25s,box-shadow .25s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 20px 44px -10px rgba(244,122,31,.72)}
+
+  footer{border-top:1px solid var(--line);margin-top:26px;padding-top:18px;font-size:12px;color:var(--blue-soft);text-align:center}
+  footer b{color:var(--navy)}
+  @media(max-width:560px){.splitrow{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <div class="logo"><div class="mark">L</div><div class="name">LockIn<span>Call</span></div></div>
+    <div class="badge">Lead-Loss Audit</div>
+  </div>
+
+  <div class="eyebrow">2-minute revenue audit</div>
+  <h1>What is <span>silence</span> costing you?</h1>
+  <p class="intro">Answer a few quick questions about your calls and jobs. We'll show you, in real dollars, how much business is slipping away through missed calls and follow-up that never happens, and how much LockInCall puts back.</p>
+
+  <div class="card">
+    <h2>About your business</h2>
+    <p class="hint">Rough numbers are fine. Drag the sliders.</p>
+
+    <div class="q">
+      <label>Your trade</label>
+      <div class="trade" id="trade">
+        <button data-tk="450" class="on">Plumbing</button>
+        <button data-tk="600">Electrical</button>
+        <button data-tk="900">HVAC</button>
+        <button data-tk="9000">Roofing</button>
+        <button data-tk="3500">Remodel</button>
+        <button data-tk="500">Other</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <label>Calls you get in a typical week</label>
+      <div class="sub">Service calls, quote requests, anyone phoning the business.</div>
+      <div class="field"><input type="range" id="calls" min="5" max="150" value="40" step="5"><span class="vbox" id="vCalls">40</span></div>
+    </div>
+
+    <div class="q">
+      <label>Of those, how many go unanswered?</label>
+      <div class="sub">On a job, after hours, on another line. Be honest, most shops miss 20-40%.</div>
+      <div class="field"><input type="range" id="misspct" min="5" max="60" value="25" step="5"><span class="vbox" id="vMiss">25%</span></div>
+    </div>
+
+    <div class="q">
+      <label>Estimates you send in a month</label>
+      <div class="sub">Quotes and bids that go out the door.</div>
+      <div class="field"><input type="range" id="ests" min="0" max="120" value="30" step="5"><span class="vbox" id="vEsts">30</span></div>
+    </div>
+
+    <div class="q">
+      <label>Of those estimates, how many do you win?</label>
+      <div class="sub">Your close rate on quotes you actually follow up on.</div>
+      <div class="field"><input type="range" id="close" min="10" max="80" value="35" step="5"><span class="vbox" id="vClose">35%</span></div>
+    </div>
+
+    <div class="q">
+      <label>Average value of one job</label>
+      <div class="sub">We pre-fill a typical number for your trade. Adjust to yours.</div>
+      <div class="field"><input type="range" id="ticket" min="150" max="20000" value="450" step="50"><span class="vbox" id="vTicket">$450</span></div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <div class="glow"></div>
+    <div class="lab">Estimated revenue slipping away</div>
+    <div class="big">$<span id="lossMo">0</span><span style="font-size:.5em;color:#9fb3d1">/mo</span></div>
+    <div class="cap">That's about <b style="color:#fff" id="lossYr">$0</b> a year walking out the door, mostly silent. You never see these as losses, because a missed call doesn't leave a voicemail saying "I just hired your competitor."</div>
+    <div class="splitrow">
+      <div class="mini"><div class="k">Missed calls / mo</div><div class="v" id="mCalls">0</div></div>
+      <div class="mini"><div class="k">Un-followed estimates / mo</div><div class="v" id="mEsts">0</div></div>
+    </div>
+  </div>
+
+  <div class="recover">
+    <h3>What LockInCall puts back</h3>
+    <div class="line"><span>Missed calls recovered by instant text-back <span style="color:var(--blue-soft)">(~60%)</span></span><span class="amt" id="recCalls">$0</span></div>
+    <div class="line"><span>Extra estimates won by automated follow-up <span style="color:var(--blue-soft)">(~25% lift)</span></span><span class="amt" id="recEsts">$0</span></div>
+    <div class="line"><span>Past customers reactivated <span style="color:var(--blue-soft)">(~1 job/mo)</span></span><span class="amt" id="recReact">$0</span></div>
+    <div class="net"><span class="t">Estimated recovered / mo</span><span class="amt" id="recTotal">$0</span></div>
+    <p class="hint" style="margin-top:12px;margin-bottom:0">Conservative estimates. Even at half these rates, the math works. Our fee is a fraction of what's shown here.</p>
+  </div>
+
+  <div class="feat">
+    <h3>How we lock it in</h3>
+    <div class="fgrid">
+      <div class="f"><svg viewBox="0 0 24 24"><path d="M3 5l4 0 1.5 4-2 1.5a11 11 0 005 5l1.5-2 4 1.5 0 4a2 2 0 01-2 2A16 16 0 013 7a2 2 0 012-2"/></svg><span><b>Missed-Call Text Back</b>Every missed call gets an instant text in 15 seconds.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><path d="M4 4v6h6"/><path d="M4 10a8 8 0 113 8"/></svg><span><b>Auto Follow-Up</b>Every estimate chased for 90 days by text and email.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1018 0"/><path d="M3 12a9 9 0 019-9"/></svg><span><b>Database Reactivation</b>Win back customers who've gone quiet.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8-4.3-4.1 5.9-.9z"/></svg><span><b>Reviews on Autopilot</b>Happy customers auto-asked for a Google review.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M12 6.5v11M14.6 9c-.5-.8-1.5-1.1-2.6-1.1-1.3 0-2.3.6-2.3 1.8 0 2.7 5.2 1.4 5.2 4.1 0 1.2-1.1 1.9-2.4 1.9-1.1 0-2.1-.4-2.6-1.2"/></svg><span><b>Get Paid Faster</b>Send invoices and estimates by text, e-signature built in.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg><span><b>Online Booking</b>Customers self-schedule into your real calendar.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.4"/><path d="M9 7h6M9 11h6M9 15h3"/></svg><span><b>AI Receptionist</b>Optional 24/7 answering and booking, even at 11pm.</span></div>
+      <div class="f"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span><b>Done-For-You</b>We build it, run it, and keep it tuned. You never log in.</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Want the full breakdown?</h2>
+    <p class="hint">Drop your info and we'll walk you through your exact numbers.</p>
+    <div class="q"><input class="textfield" type="text" placeholder="Your name"></div>
+    <div class="q"><input class="textfield" type="text" placeholder="Business name"></div>
+    <div class="q"><input class="textfield" type="tel" placeholder="Best number to text"></div>
+    <div class="cta" style="padding-top:6px">
+      <button class="btn" onclick="alert('In the live version this sends the lead to your LockInCall inbox. Demo only.')">Send me my audit</button>
+    </div>
+  </div>
+
+  <footer>
+    <b>LockInCall</b> &middot; lockincall.com &middot; Estimates are illustrative, based on your inputs and typical recovery rates. Your actual numbers may vary.
+  </footer>
+
+</div>
+
+<script>
+  const $ = id => document.getElementById(id);
+  let ticketTouched = false;
+  const tradeDefaults = {Plumbing:450, Electrical:600, HVAC:900, Roofing:9000, Remodel:3500, Other:500};
+
+  const fmt = n => '$'+Math.round(n).toLocaleString();
+  const setFill = el => {const a=+el.min,b=+el.max,v=+el.value; el.style.setProperty('--p',((v-a)/(b-a)*100)+'%');};
+
+  function calc(){
+    [$('calls'),$('misspct'),$('ests'),$('close'),$('ticket')].forEach(setFill);
+
+    const calls=+$('calls').value, misspct=+$('misspct').value/100,
+          ests=+$('ests').value, close=+$('close').value/100, ticket=+$('ticket').value;
+
+    $('vCalls').textContent=calls;
+    $('vMiss').textContent=Math.round(misspct*100)+'%';
+    $('vEsts').textContent=ests;
+    $('vClose').textContent=Math.round(close*100)+'%';
+    $('vTicket').textContent=fmt(ticket);
+
+    // missed calls per month (weekly calls * 4.33)
+    const missedCallsMo = calls*4.33*misspct;
+    // a missed call is a potential customer; value it at close rate * ticket (they'd convert like an estimate)
+    const lostFromCalls = missedCallsMo*close*ticket;
+    // estimates that get no follow-up: assume ~60% currently get little/no follow-up, and follow-up would lift wins
+    const unfollowed = ests*0.6;
+    const lostFromEsts = unfollowed*close*0.4*ticket; // 40% of those could've closed with follow-up
+    const lossMo = lostFromCalls + lostFromEsts;
+
+    $('lossMo').textContent=Math.round(lossMo).toLocaleString();
+    $('lossYr').textContent=fmt(lossMo*12);
+    $('mCalls').textContent=Math.round(missedCallsMo);
+    $('mEsts').textContent=Math.round(unfollowed);
+
+    // recovery
+    const recCalls = lostFromCalls*0.60;            // text-back recovers ~60% of missed callers
+    const recEsts  = ests*close*0.25*ticket;         // ~25% lift on won estimates from follow-up
+    const recReact = ticket;                          // ~1 reactivated job/mo
+    const recTotal = recCalls + recEsts + recReact;
+
+    $('recCalls').textContent=fmt(recCalls);
+    $('recEsts').textContent=fmt(recEsts);
+    $('recReact').textContent=fmt(recReact);
+    $('recTotal').textContent=fmt(recTotal);
+  }
+
+  // trade buttons set ticket default
+  $('trade').addEventListener('click', e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    [...e.currentTarget.children].forEach(x=>x.classList.toggle('on', x===b));
+    if(!ticketTouched){ $('ticket').value = b.dataset.tk; }
+    calc();
+  });
+  $('ticket').addEventListener('input', ()=>{ ticketTouched=true; });
+
+  ['calls','misspct','ests','close','ticket'].forEach(id=>{
+    $(id).addEventListener('input', calc);
+    $(id).addEventListener('change', calc);
+  });
+  calc();
+</script>
+</body>
+</html>

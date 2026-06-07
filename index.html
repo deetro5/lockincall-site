@@ -6,6 +6,7 @@
 <meta name="color-scheme" content="light only">
 <title>LockInCall — Stop Losing Jobs to Silence</title>
 <meta name="description" content="LockInCall installs a done-for-you system that catches every missed call, follows up on every estimate, and books more jobs for contractors. You keep your number. We lock in every call.">
+<link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,7 +29,6 @@
   .wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 28px}
   a{color:inherit}
 
-  /* NAV */
   nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0;
     border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50;
     background:rgba(251,252,255,.86);backdrop-filter:blur(10px)}
@@ -47,7 +47,6 @@
   .navbtn:hover{transform:translateY(-2px)}
   @media(max-width:680px){.navlinks a:not(.navbtn){display:none}}
 
-  /* HERO */
   header{padding:78px 0 30px;position:relative}
   .glow{position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:720px;height:440px;z-index:-1;
     background:radial-gradient(ellipse at center,rgba(29,78,137,.10),transparent 68%);filter:blur(26px)}
@@ -72,7 +71,6 @@
   .btn.ghost:hover{transform:translateY(-3px);border-color:var(--navy)}
   .btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 
-  /* STATS */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);
     border-radius:18px;overflow:hidden;margin:64px 0 0;box-shadow:0 16px 40px -24px rgba(15,44,84,.5);
     opacity:0;animation:rise .8s .56s forwards}
@@ -80,7 +78,6 @@
   .stat .n{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:42px;color:var(--orange);letter-spacing:0}
   .stat .l{font-size:13.5px;color:var(--blue-soft);margin-top:6px;line-height:1.45}
 
-  /* SECTION SHELL */
   section{padding:74px 0}
   .shead{text-align:center;max-width:60ch;margin:0 auto 44px}
   .shead .kick{font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--orange-deep);font-weight:700;margin-bottom:14px}
@@ -89,68 +86,63 @@
   .shead h2 em{font-style:normal;color:var(--orange)}
   .shead p{color:var(--blue-soft);font-size:16px;margin-top:14px}
 
-  /* PROBLEM CARDS */
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .pcard{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:28px 26px;
-    box-shadow:0 4px 14px -8px rgba(15,44,84,.25)}
+  .pcard{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:28px 26px;box-shadow:0 4px 14px -8px rgba(15,44,84,.25)}
   .pcard .pn{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:15px;color:#fff;
     background:var(--navy);width:34px;height:34px;border-radius:9px;display:grid;place-items:center;margin-bottom:16px}
-  .pcard h3{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;
-    letter-spacing:.02em;color:var(--navy);margin-bottom:9px}
+  .pcard h3{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:20px;text-transform:uppercase;letter-spacing:.02em;color:var(--navy);margin-bottom:9px}
   .pcard p{font-size:14.5px;color:var(--blue-soft);line-height:1.55}
 
-  /* FEATURES */
   .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-  .fcard{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px 20px;
-    box-shadow:0 4px 14px -8px rgba(15,44,84,.25);transition:transform .3s,box-shadow .3s,border-color .3s}
+  .fcard{background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:22px 20px;box-shadow:0 4px 14px -8px rgba(15,44,84,.25);transition:transform .3s,box-shadow .3s,border-color .3s}
   .fcard:hover{transform:translateY(-5px);border-color:var(--orange);box-shadow:0 20px 40px -22px rgba(15,44,84,.5)}
-  .fico{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(244,122,31,.12);
-    border:1px solid rgba(244,122,31,.25);margin-bottom:15px}
+  .fico{width:44px;height:44px;border-radius:11px;display:grid;place-items:center;background:rgba(244,122,31,.12);border:1px solid rgba(244,122,31,.25);margin-bottom:15px}
   .fico svg{width:22px;height:22px;stroke:var(--orange-deep);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-  .fcard h4{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;
-    letter-spacing:.02em;color:var(--navy);margin-bottom:7px}
+  .fcard h4{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.02em;color:var(--navy);margin-bottom:7px}
   .fcard p{font-size:13.5px;color:var(--blue-soft);line-height:1.5}
 
-  /* HOW (navy band) */
-  .how{background:linear-gradient(135deg,#143768,var(--navy));border-radius:24px;padding:52px 44px;position:relative;overflow:hidden;
-    box-shadow:0 24px 54px -28px rgba(15,44,84,.7)}
-  .how .glow2{position:absolute;right:-80px;top:-80px;width:320px;height:320px;
-    background:radial-gradient(circle,rgba(244,122,31,.28),transparent 70%);filter:blur(12px)}
+  .how{background:linear-gradient(135deg,#143768,var(--navy));border-radius:24px;padding:52px 44px;position:relative;overflow:hidden;box-shadow:0 24px 54px -28px rgba(15,44,84,.7)}
+  .how .glow2{position:absolute;right:-80px;top:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(244,122,31,.28),transparent 70%);filter:blur(12px)}
   .how .kick{color:var(--orange-2);font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;margin-bottom:12px;text-align:center}
-  .how h2{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:clamp(26px,3.6vw,40px);
-    text-transform:uppercase;letter-spacing:.02em;color:#fff;text-align:center;margin-bottom:38px}
+  .how h2{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:clamp(26px,3.6vw,40px);text-transform:uppercase;letter-spacing:.02em;color:#fff;text-align:center;margin-bottom:38px}
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
-  .step .s-n{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:16px;color:#fff;
-    width:34px;height:34px;border-radius:50%;background:var(--orange);display:grid;place-items:center;margin-bottom:15px}
-  .step h4{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;
-    letter-spacing:.03em;color:#fff;margin-bottom:7px}
+  .step .s-n{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:16px;color:#fff;width:34px;height:34px;border-radius:50%;background:var(--orange);display:grid;place-items:center;margin-bottom:15px}
+  .step h4{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.03em;color:#fff;margin-bottom:7px}
   .step p{font-size:14px;color:#b9c8de;line-height:1.55}
 
-  /* CTA */
-  .cta{text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:60px 30px;
-    box-shadow:0 16px 44px -28px rgba(15,44,84,.5);position:relative;overflow:hidden}
+  /* CONTACT */
+  .contact{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:46px 40px;text-align:center;box-shadow:0 12px 36px -24px rgba(15,44,84,.5)}
+  .contact h2{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,34px);text-transform:uppercase;color:var(--navy);margin-bottom:8px}
+  .contact p.lead{color:var(--blue-soft);font-size:15.5px;margin-bottom:26px}
+  .cinfo{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+  .cinfo .item{font-size:15px;color:var(--blue)}
+  .cinfo .item b{display:block;font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--orange-deep);margin-bottom:5px}
+  .cinfo a{color:var(--blue);text-decoration:none}
+  .cinfo a:hover{color:var(--orange-deep)}
+
+  .cta{text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:60px 30px;box-shadow:0 16px 44px -28px rgba(15,44,84,.5);position:relative;overflow:hidden}
   .cta .glow{top:-60px}
-  .cta h2{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:clamp(30px,4.8vw,56px);
-    text-transform:uppercase;letter-spacing:-.2px;line-height:1.04;color:var(--navy);max-width:20ch;margin:0 auto}
+  .cta h2{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:clamp(30px,4.8vw,56px);text-transform:uppercase;letter-spacing:-.2px;line-height:1.04;color:var(--navy);max-width:20ch;margin:0 auto}
   .cta h2 span{color:var(--orange)}
   .cta p{color:var(--blue-soft);font-size:16px;margin:18px auto 32px;max-width:46ch}
 
-  /* FOOTER */
-  footer{border-top:1px solid var(--line);margin-top:30px;padding:40px 0 60px;
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  footer{border-top:1px solid var(--line);margin-top:30px;padding:40px 0 60px}
+  .frow{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:22px}
   .flogo{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:20px;color:var(--navy)}
   .flogo span{color:var(--orange)}
-  footer p{font-size:12.5px;color:var(--blue-soft)}
-  .flinks{display:flex;gap:22px}
+  .faddr{font-size:13px;color:var(--blue-soft);margin-top:8px;line-height:1.6}
+  .faddr a{color:var(--blue-soft);text-decoration:none}
+  .flinks{display:flex;gap:22px;flex-wrap:wrap}
   .flinks a{font-size:13.5px;color:var(--blue-soft);text-decoration:none;font-weight:500}
   .flinks a:hover{color:var(--orange-deep)}
+  .fbottom{margin-top:26px;padding-top:18px;border-top:1px solid var(--line2);font-size:12px;color:var(--blue-soft);text-align:center}
 
   @keyframes rise{to{opacity:1;transform:translateY(0)}}
   @keyframes underline{to{transform:scaleX(1)}}
   header .eyebrow,header h1,header .sub,header .herobtns,header .stats{transform:translateY(20px)}
 
   @media(max-width:900px){.grid3{grid-template-columns:1fr}.feat-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr);gap:30px}}
-  @media(max-width:560px){.wrap{padding:0 18px}.stats{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.how{padding:38px 24px}}
+  @media(max-width:560px){.wrap{padding:0 18px}.stats{grid-template-columns:1fr}.feat-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.how{padding:38px 24px}.cinfo{gap:24px}}
 </style>
 </head>
 <body>
@@ -161,6 +153,7 @@
     <div class="navlinks">
       <a href="#how">How it works</a>
       <a href="#features">What you get</a>
+      <a href="#contact">Contact</a>
       <a href="lockincall-leadloss-survey.html" class="navbtn">Free Audit</a>
     </div>
   </nav>
@@ -184,7 +177,6 @@
     </div>
   </header>
 
-  <!-- PROBLEM -->
   <section id="problem">
     <div class="shead">
       <div class="kick">The leak</div>
@@ -198,7 +190,6 @@
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section id="features">
     <div class="shead">
       <div class="kick">What you get</div>
@@ -217,7 +208,6 @@
     </div>
   </section>
 
-  <!-- HOW -->
   <section id="how">
     <div class="how">
       <div class="glow2"></div>
@@ -232,8 +222,7 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="cta">
+  <section id="cta-sec">
     <div class="cta">
       <div class="glow"></div>
       <h2>Let's find out what <span>silence</span> is costing you.</h2>
@@ -244,17 +233,38 @@
     </div>
   </section>
 
-  <footer>
-    <div class="flogo">LockIn<span>Call</span></div>
-    <div class="flinks">
-      <a href="#how">How it works</a>
-      <a href="#features">What you get</a>
-      <a href="lockincall-leadloss-survey.html">Free audit</a>
+  <section id="contact">
+    <div class="contact">
+      <h2>Get in touch</h2>
+      <p class="lead">Questions? Reach out, a real person will get back to you.</p>
+      <div class="cinfo">
+        <div class="item"><b>Call or text</b><a href="tel:+18653483728">(865) 348-3728</a></div>
+        <div class="item"><b>Email</b><a href="mailto:deetro@gmail.com">deetro@gmail.com</a></div>
+        <div class="item"><b>Address</b>1557 Cherrybrook Dr<br>Knoxville, TN 37912</div>
+      </div>
     </div>
-    <p>© LockInCall · lockincall.com · Built and run by Derek &amp; Meghan</p>
-    <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a1c92791b5a98ef9d902935" data-source="WEB_USER"></script>
+  </section>
+
+  <footer>
+    <div class="frow">
+      <div>
+        <div class="flogo">LockIn<span>Call</span></div>
+        <div class="faddr">1557 Cherrybrook Dr, Knoxville, TN 37912<br><a href="tel:+18653483728">(865) 348-3728</a> · <a href="mailto:deetro@gmail.com">deetro@gmail.com</a></div>
+      </div>
+      <div class="flinks">
+        <a href="#how">How it works</a>
+        <a href="#features">What you get</a>
+        <a href="#contact">Contact</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="fbottom">© LockInCall · lockincall.com · Built and run by Derek &amp; Meghan</div>
   </footer>
 
 </div>
+
+<!-- LeadConnector chat widget: homepage only (kept OFF the lead-loss survey page, which collects a phone number, to satisfy A2P compliance) -->
+<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a1c92791b5a98ef9d902935" data-source="WEB_USER"></script>
 </body>
 </html>
