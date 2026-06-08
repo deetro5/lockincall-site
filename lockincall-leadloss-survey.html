@@ -97,6 +97,37 @@
   .recover .net .t{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:16px;text-transform:uppercase;color:var(--navy)}
   .recover .net .amt{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:30px;color:var(--orange-deep)}
 
+  /* TIER-AWARE RECOVERY BLOCKS */
+  .recover .tier-block{padding:14px 0;border-top:1px solid var(--line2)}
+  .recover .tier-block:first-of-type{border-top:none;padding-top:0}
+  .recover .tlabel{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:12px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--orange-deep);margin-bottom:10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .recover .tlabel .price{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.04em;
+    text-transform:none;color:var(--blue-soft)}
+  .recover .tier-block .line{padding:7px 0;border-top:none;font-size:14.5px}
+  .recover .tier-block .line .amt{font-size:18px}
+  .recover .tier-block .subtotal{display:flex;justify-content:space-between;align-items:baseline;padding-top:8px;margin-top:4px;
+    border-top:1px dashed var(--line);font-size:13.5px;color:var(--blue-soft);font-weight:600}
+  .recover .tier-block .subtotal .amt{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:17px;
+    color:var(--navy);font-variant-numeric:tabular-nums}
+
+  /* TIER RECOMMENDATION CARD */
+  .recommend{background:linear-gradient(135deg,#143768,var(--navy));border:1px solid var(--navy);border-radius:18px;
+    padding:28px 28px;color:#fff;margin-bottom:20px;position:relative;overflow:hidden;
+    box-shadow:0 18px 44px -22px rgba(15,44,84,.65)}
+  .recommend .glow-r{position:absolute;left:-60px;bottom:-60px;width:240px;height:240px;
+    background:radial-gradient(circle,rgba(244,122,31,.28),transparent 70%);filter:blur(14px);pointer-events:none}
+  .recommend .r-eyebrow{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-2);font-weight:700;
+    margin-bottom:8px;position:relative;z-index:1}
+  .recommend h3{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:800;font-size:24px;text-transform:uppercase;
+    letter-spacing:-.2px;color:#fff;margin-bottom:10px;position:relative;z-index:1;line-height:1.15}
+  .recommend h3 span{color:var(--orange-2)}
+  .recommend p{font-size:14.5px;color:#c3d2e6;line-height:1.55;margin-bottom:18px;position:relative;z-index:1}
+  .recommend .actions{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+  .recommend .actions .btn{font-size:15px;padding:13px 24px}
+  .recommend .actions .btn.ghost{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;box-shadow:none}
+  .recommend .actions .btn.ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-3px);box-shadow:none}
+
   .feat{margin-bottom:20px}
   .feat h3{font-family:'Saira Condensed','Arial Narrow',sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;
     letter-spacing:.04em;color:var(--navy);margin-bottom:14px}
@@ -129,7 +160,7 @@
 
   <div class="eyebrow">2-minute revenue audit</div>
   <h1>What is <span>silence</span> costing you?</h1>
-  <p class="intro">Answer a few quick questions about your calls and jobs. We'll show you, in real dollars, how much business is slipping away through missed calls and follow-up that never happens, and how much LockInCall puts back.</p>
+  <p class="intro">Answer a few quick questions about your calls and jobs. We'll show you, in real dollars, how much business is slipping away — broken out by what each LockInCall tier recovers, with a recommendation for the fit that makes sense for your shop.</p>
 
   <div class="card">
     <h2>About your business</h2>
@@ -191,11 +222,44 @@
 
   <div class="recover">
     <h3>What LockInCall puts back</h3>
-    <div class="line"><span>Missed calls recovered by instant text-back <span style="color:var(--blue-soft)">(~60%)</span></span><span class="amt" id="recCalls">$0</span></div>
-    <div class="line"><span>Extra estimates won by automated follow-up <span style="color:var(--blue-soft)">(~25% lift)</span></span><span class="amt" id="recEsts">$0</span></div>
-    <div class="line"><span>Past customers reactivated <span style="color:var(--blue-soft)">(~1 job/mo)</span></span><span class="amt" id="recReact">$0</span></div>
-    <div class="net"><span class="t">Estimated recovered / mo</span><span class="amt" id="recTotal">$0</span></div>
-    <p class="hint" style="margin-top:12px;margin-bottom:0">Conservative estimates. Even at half these rates, the math works. Our fee is a fraction of what's shown here.</p>
+
+    <div class="tier-block">
+      <div class="tlabel">Tier 1 — Core <span class="price">$597/mo</span></div>
+      <div class="line"><span>Missed calls recovered by text-back <span style="color:var(--blue-soft)">(~60%)</span></span><span class="amt" id="recCalls">$0</span></div>
+      <div class="line"><span>Estimates won by Failed Estimate Reanimator <span style="color:var(--blue-soft)">(~25% lift)</span></span><span class="amt" id="recEsts">$0</span></div>
+      <div class="subtotal"><span>Tier 1 subtotal</span><span class="amt" id="recT1">$0</span></div>
+    </div>
+
+    <div class="tier-block">
+      <div class="tlabel">Tier 2 — Operations adds <span class="price">$997/mo</span></div>
+      <div class="line"><span>Same-street referrals from Neighbor Proof Cascade <span style="color:var(--blue-soft)">(~10% of won jobs)</span></span><span class="amt" id="recCascade">$0</span></div>
+      <div class="line"><span>Snap-a-Photo AI quoting capture bonus <span style="color:var(--blue-soft)">(~15%)</span></span><span class="amt" id="recPhoto">$0</span></div>
+      <div class="subtotal"><span>Tier 2 adds</span><span class="amt" id="recT2">$0</span></div>
+    </div>
+
+    <div class="tier-block" id="t3Block">
+      <div class="tlabel">Tier 3 — Elite AI adds <span class="price">$1,997/mo</span></div>
+      <div class="line" id="lineFinance"><span>Financing close-rate lift on high-ticket jobs <span style="color:var(--blue-soft)">(~8%)</span></span><span class="amt" id="recFinance">$0</span></div>
+      <div class="line" id="lineMember"><span>Membership Autopilot recurring revenue added <span style="color:var(--blue-soft)">(monthly, compounding)</span></span><span class="amt" id="recMember">$0</span></div>
+      <div class="line" id="lineStorm"><span>Storm Strike Response weather-driven jobs <span style="color:var(--blue-soft)">(avg/mo)</span></span><span class="amt" id="recStorm">$0</span></div>
+      <div class="subtotal"><span>Tier 3 adds</span><span class="amt" id="recT3">$0</span></div>
+    </div>
+
+    <div class="net"><span class="t">Total potential recovery / mo</span><span class="amt" id="recTotal">$0</span></div>
+    <p class="hint" style="margin-top:12px;margin-bottom:0">Conservative estimates based on industry benchmarks. Tier 1 and Tier 2 math applies to almost every shop; Tier 3 lines show only where they apply to your trade and ticket size.</p>
+  </div>
+
+  <div class="recommend">
+    <div class="glow-r"></div>
+    <div class="r-eyebrow">Your fit</div>
+    <h3>Recommended: <span id="recTierName">Tier 2 — Operations Engine</span></h3>
+    <p id="recReason">Based on your numbers, Operations Engine looks like the cleanest fit.</p>
+    <div class="actions">
+      <a href="pricing.html" class="btn">See tier details
+        <svg style="width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="demo.html" class="btn ghost">Book a demo</a>
+    </div>
   </div>
 
   <div class="feat">
@@ -230,7 +294,7 @@
   </div>
 
   <footer>
-    <b>LockInCall</b> &middot; lockincall.com &middot; Estimates are illustrative, based on your inputs and typical recovery rates. Your actual numbers may vary.
+    <b>LockInCall</b> &middot; lockincall.com &middot; Estimates are illustrative, based on your inputs and typical per-tier recovery rates. Your actual numbers may vary.
   </footer>
 
 </div>
@@ -255,13 +319,11 @@
     $('vClose').textContent=Math.round(close*100)+'%';
     $('vTicket').textContent=fmt(ticket);
 
-    // missed calls per month (weekly calls * 4.33)
+    // ----- LOSS MATH (Tier 1 framing) -----
     const missedCallsMo = calls*4.33*misspct;
-    // a missed call is a potential customer; value it at close rate * ticket (they'd convert like an estimate)
     const lostFromCalls = missedCallsMo*close*ticket;
-    // estimates that get no follow-up: assume ~60% currently get little/no follow-up, and follow-up would lift wins
     const unfollowed = ests*0.6;
-    const lostFromEsts = unfollowed*close*0.4*ticket; // 40% of those could've closed with follow-up
+    const lostFromEsts = unfollowed*close*0.4*ticket;
     const lossMo = lostFromCalls + lostFromEsts;
 
     $('lossMo').textContent=Math.round(lossMo).toLocaleString();
@@ -269,16 +331,87 @@
     $('mCalls').textContent=Math.round(missedCallsMo);
     $('mEsts').textContent=Math.round(unfollowed);
 
-    // recovery
-    const recCalls = lostFromCalls*0.60;            // text-back recovers ~60% of missed callers
-    const recEsts  = ests*close*0.25*ticket;         // ~25% lift on won estimates from follow-up
-    const recReact = ticket;                          // ~1 reactivated job/mo
-    const recTotal = recCalls + recEsts + recReact;
+    // ----- TIER 1 RECOVERY -----
+    const recCalls = lostFromCalls*0.60;          // text-back recovers ~60% of missed callers
+    const recEsts  = ests*close*0.25*ticket;       // ~25% lift on estimates from Reanimator
+    const t1Total  = recCalls + recEsts;
 
+    // ----- TIER 2 RECOVERY (applies broadly) -----
+    const wonJobsMo  = ests*close;
+    const recCascade = wonJobsMo*0.10*ticket;      // 10% same-street referrals from Neighbor Proof
+    const recPhoto   = lostFromCalls*0.15;         // 15% extra capture from instant Snap-a-Photo quoting
+    const t2Total    = recCascade + recPhoto;
+
+    // ----- TIER 3 RECOVERY (conditional on trade/ticket) -----
+    const tradeEl = document.querySelector('#trade button.on');
+    const trade = tradeEl ? tradeEl.textContent : 'Other';
+    let recFinance = 0, recMember = 0, recStorm = 0;
+
+    // Financing: meaningful on $3k+ tickets
+    if (ticket >= 3000){
+      recFinance = ests*close*0.08*ticket;          // ~8% close-rate lift via financing
+    }
+    // Membership: maintenance-friendly recurring trades
+    if (['Plumbing','Electrical','HVAC'].includes(trade)){
+      recMember = wonJobsMo*0.05*30;                // 5% of new customers sign up at $30/mo
+    }
+    // Storm Strike: weather-impacted trades
+    if (trade === 'Roofing'){
+      recStorm = (4*ticket)/12;                     // ~4 storm-driven jobs/year averaged monthly
+    } else if (trade === 'HVAC'){
+      recStorm = (2*ticket)/12;                     // ~2 storm-driven jobs/year
+    }
+    const t3Total = recFinance + recMember + recStorm;
+
+    // Paint Tier 1
     $('recCalls').textContent=fmt(recCalls);
     $('recEsts').textContent=fmt(recEsts);
-    $('recReact').textContent=fmt(recReact);
+    $('recT1').textContent=fmt(t1Total);
+
+    // Paint Tier 2
+    $('recCascade').textContent=fmt(recCascade);
+    $('recPhoto').textContent=fmt(recPhoto);
+    $('recT2').textContent=fmt(t2Total);
+
+    // Paint Tier 3 lines, hide what doesn't apply
+    $('recFinance').textContent=fmt(recFinance);
+    $('recMember').textContent=fmt(recMember);
+    $('recStorm').textContent=fmt(recStorm);
+    $('recT3').textContent=fmt(t3Total);
+    $('lineFinance').style.display = recFinance > 0 ? 'flex' : 'none';
+    $('lineMember').style.display  = recMember  > 0 ? 'flex' : 'none';
+    $('lineStorm').style.display   = recStorm   > 0 ? 'flex' : 'none';
+    $('t3Block').style.display     = t3Total    > 0 ? 'block' : 'none';
+
+    // Grand total
+    const recTotal = t1Total + t2Total + t3Total;
     $('recTotal').textContent=fmt(recTotal);
+
+    // ----- TIER RECOMMENDATION -----
+    let rec = 1;
+    if (lossMo > 15000) {
+      rec = 3;
+    } else if (t3Total > 2000 && ['Roofing','HVAC','Remodel'].includes(trade)) {
+      rec = 3;
+    } else if (ticket >= 4000 && lossMo > 4000) {
+      rec = 3;
+    } else if (lossMo > 2000 || t2Total > 600) {
+      rec = 2;
+    }
+
+    const tierNames = {
+      1: 'Tier 1 — Core Infrastructure',
+      2: 'Tier 2 — Operations Engine',
+      3: 'Tier 3 — Elite AI Automation'
+    };
+    const reasons = {
+      1: "Your numbers say start simple. Core plugs the biggest leaks — missed calls, missed Google chats, missed review moments — with zero work for your techs. Clean place to prove the system before moving up.",
+      2: "This is the sweet spot for shops like yours. Operations Engine adds the AI quoting, Jobber sync, and same-street referral math that turn caught leaks into compounding revenue. Most of our contractors run this tier.",
+      3: "Your volume, ticket size, or vertical pushes you into Elite. The financing, membership, and storm-response mechanics work hardest at your scale. The setup is bigger, but the math justifies it."
+    };
+
+    $('recTierName').textContent = tierNames[rec];
+    $('recReason').textContent = reasons[rec];
   }
 
   // trade buttons set ticket default
